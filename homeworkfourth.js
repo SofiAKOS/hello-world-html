@@ -91,10 +91,10 @@ function showUser(id) {
 }
 
 function showUsers(ids) {
-  var validIds = [];
-  for (var i = 0; i < ids.length; i++) {
+  let validIds = [];
+  for (let i = 0; i < ids.length; i++) {
     try {
-      var user = showUser(ids[i]);
+      let user = showUser(ids[i]);
       validIds.push(user);
     } catch (error) {
       console.log('Error:', error.message);
