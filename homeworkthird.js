@@ -71,7 +71,7 @@ function compact(arr) {
   //6
 
   function calc(a, b, op) {
-    let result;
+    `let result;
     
     if (op === 1) {
       result = a - b;
@@ -88,7 +88,7 @@ function compact(arr) {
 //7
 
 function findUnique(arr) {
-    const set = new Set(arr);
+    const set = new Set(arr);a
     return set.size === arr.length;
   }
   
