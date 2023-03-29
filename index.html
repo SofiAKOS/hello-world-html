@@ -11,6 +11,15 @@
     <h1>Hello World from Sophia!   </h1>
         <script> 
         alert("Sophia");
+        function displayList() {
+  var list = document.getElementById("list"); 
+  var first = list.firstElementChild.innerHTML; 
+  var last = list.lastElementChild.innerHTML; 
+  var second = list.firstElementChild.nextElementSibling.innerHTML; 
+  var fourth = list.lastElementChild.previousElementSibling.innerHTML; 
+  var third = list.children[2].innerHTML; 
+  alert(first + ", " + last + ", " + second + ", " + fourth + ", " + third);
+}
         </script>
 </body>
 </html>
