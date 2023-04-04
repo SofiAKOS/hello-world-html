@@ -71,7 +71,7 @@ function compact(arr) {
   //6
 
   function calc(a, b, op) {
-    `let result;
+    let result;
     
     if (op === 1) {
       result = a - b;
@@ -94,5 +94,3 @@ function findUnique(arr) {
   
   console.log(findUnique([1, 2, 3, 5, 3])); 
   console.log(findUnique([1, 2, 3, 5, 11]));
-  
-
