@@ -9,6 +9,26 @@
 </head>
 <body>
     <h1>Hello World from Sophia!   </h1>
+    <button id="myButton" onclick="buttonClick()" onmouseover="buttonMouseOver()" onmouseout="buttonMouseOut()">Натисни мене</button>
+    <p>Ширина: <span id="width"></span></p>
+    <p>Висота: <span id="height"></span></p>
+    
+
+    <select id="mySelect">
+      <option value="option1">Варіант 1</option>
+      <option value="option2">Варіант 2</option>
+      <option value="option3">Варіант 3</option>
+    </select>
+    <button onclick="deleteOption()">Видалити</button>
+    <select name="country" id="country">
+      <option value="ger">Germany</option>
+      <option value="usa">USA</option>
+      <option value="ukr">Ukraine</option>
+  </select>
+                  
+  <select name="cities" id="cities"></select>
+  
+  <p id="output"></p>
         <script> 
         alert("Sophia");
         function displayList() {
@@ -20,6 +40,72 @@
   var third = list.children[2].innerHTML; 
   alert(first + ", " + last + ", " + second + ", " + fourth + ", " + third);
 }
+
+  function deleteOption() {
+    var select = document.getElementById("mySelect");
+    var selectedOption = select.value;
+    var options = select.options;
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].value === selectedOption) {
+        select.removeChild(options[i]);
+        break;
+      }
+    }
+  }
+  function buttonClick() {
+    alert("I was pressed!");
+  }
+
+  function buttonMouseOver() {
+    alert("Mouse on me!");
+  }
+
+  function buttonMouseOut() {
+    alert("Mouse is not on me!");
+  }
+  function updateWindowSize() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        document.getElementById("width").textContent = width;
+        document.getElementById("height").textContent = height;
+      }
+    
+      window.addEventListener("resize", updateWindowSize);
+      updateWindowSize();
+
+    var citiesByCountry = {
+        "ger": ["Berlin", "Munich", "Hamburg"],
+        "usa": ["New York", "Los Angeles", "Chicago"],
+        "ukr": ["Kyiv", "Lviv", "Odessa"]
+    };
+
+    var countrySelect = document.getElementById("country");
+    var citiesSelect = document.getElementById("cities");
+    var output = document.getElementById("output");
+
+    function updateCities() {
+        var selectedCountry = countrySelect.value;
+        var cities = citiesByCountry[selectedCountry];
+        citiesSelect.innerHTML = "";
+
+        for (var i = 0; i < cities.length; i++) {
+            var option = document.createElement("option");
+            option.value = cities[i];
+            option.text = cities[i];
+            citiesSelect.appendChild(option);
+        }
+        
+        var selectedCity = citiesSelect.value;
+        output.textContent = "Обрана країна: " + countrySelect.options[countrySelect.selectedIndex].text + ", місто: " + selectedCity;
+    }
+
+    countrySelect.addEventListener("change", updateCities);
+    citiesSelect.addEventListener("change", function() {
+        var selectedCity = citiesSelect.value;
+        output.textContent = "Обрана країна: " + countrySelect.options[countrySelect.selectedIndex].text + ", місто: " + selectedCity;
+    });
+
+    updateCities();
 
         </script>
         <p id='text'>I learning JavaScript events!</p> 
